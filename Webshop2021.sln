@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{264BFA0F-D10C-4F6F-9D8E-3A65076293C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lindholm.Webshop2021.WebApi", "Lindholm.Webshop2021.WebApi\Lindholm.Webshop2021.WebApi.csproj", "{2ED0E936-8B6D-4EB2-8213-9A411D33E9D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{DD26CE19-D8B5-4396-8363-B68815BBBB31}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core.Test", "Core.Test", "{4182974C-6EBE-4F7A-88A1-FBB25E43EEFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lindholm.Webshop2021.Core", "Lindholm.Webshop2021.Core\Lindholm.Webshop2021.Core.csproj", "{37F281D7-0691-47B0-808B-26FB02951295}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lindholm.Webshop2021.Core.Test", "Lindholm.Webshop2021.Core.Test\Lindholm.Webshop2021.Core.Test.csproj", "{A838D623-D59F-4263-937F-B93435A7D891}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lindholm.Webshop2021.Domain", "Lindholm.Webshop2021.Domain\Lindholm.Webshop2021.Domain.csproj", "{51E6C262-1940-408C-8669-6134DC5633E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lindholm.Webshop2021.Domain.Test", "Lindholm.Webshop2021.Domain.Test\Lindholm.Webshop2021.Domain.Test.csproj", "{B43F4B04-9ED2-4C2F-AA0C-24679D45C04E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2ED0E936-8B6D-4EB2-8213-9A411D33E9D6} = {264BFA0F-D10C-4F6F-9D8E-3A65076293C0}
+		{37F281D7-0691-47B0-808B-26FB02951295} = {DD26CE19-D8B5-4396-8363-B68815BBBB31}
+		{A838D623-D59F-4263-937F-B93435A7D891} = {4182974C-6EBE-4F7A-88A1-FBB25E43EEFE}
+		{51E6C262-1940-408C-8669-6134DC5633E9} = {DD26CE19-D8B5-4396-8363-B68815BBBB31}
+		{B43F4B04-9ED2-4C2F-AA0C-24679D45C04E} = {4182974C-6EBE-4F7A-88A1-FBB25E43EEFE}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2ED0E936-8B6D-4EB2-8213-9A411D33E9D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ED0E936-8B6D-4EB2-8213-9A411D33E9D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ED0E936-8B6D-4EB2-8213-9A411D33E9D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ED0E936-8B6D-4EB2-8213-9A411D33E9D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37F281D7-0691-47B0-808B-26FB02951295}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37F281D7-0691-47B0-808B-26FB02951295}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37F281D7-0691-47B0-808B-26FB02951295}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37F281D7-0691-47B0-808B-26FB02951295}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A838D623-D59F-4263-937F-B93435A7D891}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A838D623-D59F-4263-937F-B93435A7D891}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A838D623-D59F-4263-937F-B93435A7D891}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A838D623-D59F-4263-937F-B93435A7D891}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51E6C262-1940-408C-8669-6134DC5633E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51E6C262-1940-408C-8669-6134DC5633E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51E6C262-1940-408C-8669-6134DC5633E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51E6C262-1940-408C-8669-6134DC5633E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B43F4B04-9ED2-4C2F-AA0C-24679D45C04E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B43F4B04-9ED2-4C2F-AA0C-24679D45C04E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B43F4B04-9ED2-4C2F-AA0C-24679D45C04E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B43F4B04-9ED2-4C2F-AA0C-24679D45C04E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
