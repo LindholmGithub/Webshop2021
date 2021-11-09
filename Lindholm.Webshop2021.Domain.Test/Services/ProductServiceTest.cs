@@ -40,7 +40,7 @@ namespace Lindholm.Webshop2021.Domain.Test.Services
         }
         #endregion
 
-        #region ProductService GetAll
+        #region ProductService GetAllProducts
 
         [Fact]
         public void GetAll_NoParams_CallsProductRepositoryOnce()
@@ -73,6 +73,42 @@ namespace Lindholm.Webshop2021.Domain.Test.Services
             Assert.Equal(expected,productService.GetAll(),new ProductComparer());
         }
         
+
+        #endregion
+
+        #region GetProduct
+        
+        [Fact]
+        public void GetProduct_WithParams_CallsProductRepositoryOnce()
+        {
+            //Arrange
+            var mockRepo = new Mock<IProductRepository>();
+            var productService = new ProductService(mockRepo.Object);
+            var productId = (int) 1;
+            
+            //Act
+            productService.GetProduct(productId);
+            
+            //Assert
+            mockRepo.Verify(r => r.GetProduct(productId), Times.Once);
+        }
+
+        public void GetProduct_WithParams_ReturnsSingleProduct()
+        {
+            //Arrange
+            var expected = new Product {Id = 1, Name = "Ostestol"};
+            var mockRepo = new Mock<IProductRepository>();
+            mockRepo
+                .Setup(r => r.GetProduct(expected.Id))
+                .Returns(expected);
+            var productService = new ProductService(mockRepo.Object);
+            
+            //Act
+            productService.GetProduct(expected.Id);
+            
+            //Assert
+            Assert.Equal(expected,productService.GetProduct(expected.Id),new ProductComparer());
+        }
 
         #endregion
     }

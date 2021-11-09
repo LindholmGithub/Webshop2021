@@ -23,7 +23,12 @@ namespace Lindholm.Webshop2021.Domain.Services
 
         public List<Product> GetAll()
         {
-            return _productRepository.ReadAll().Where(p => p.Id == 1).ToList();
+            return _productRepository.ReadAll();
+        }
+
+        public Product GetProduct(int productId)
+        {
+            return _productRepository.GetProduct(productId);
         }
     }
 }

@@ -24,5 +24,16 @@ namespace Lindholm.Webshop2021.Core.Test.IServices
                 .Returns(new List<Product>());
             Assert.NotNull(serviceMock.Object);
         }
+
+        [Fact]
+        public void GetProduct_WithParams_ReturnsSingleProduct()
+        {
+            var serviceMock = new Mock<IProductService>();
+            var productId = 1;
+            serviceMock
+                .Setup(s => s.GetProduct(productId))
+                .Returns(new Product());
+            Assert.NotNull(serviceMock.Object);
+        }
     }
 }
