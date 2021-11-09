@@ -18,7 +18,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lindholm.Webshop2021.Domain
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{DD4CD990-353D-493C-A8B8-8AFF7E4E5BC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lindholm.Webshop2021.DataAccess", "Lindholm.Webshop2021.DataAccess\Lindholm.Webshop2021.DataAccess.csproj", "{781F0A3A-EBFD-4F60-B4A7-240E93812232}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lindholm.Webshop2021.Data", "Lindholm.Webshop2021.Data\Lindholm.Webshop2021.Data.csproj", "{781F0A3A-EBFD-4F60-B4A7-240E93812232}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lindholm.Webshop2021.Security", "Lindholm.Webshop2021.Security\Lindholm.Webshop2021.Security.csproj", "{CCAD1720-D35B-48AD-8875-092F0DF16A2A}"
 EndProject
