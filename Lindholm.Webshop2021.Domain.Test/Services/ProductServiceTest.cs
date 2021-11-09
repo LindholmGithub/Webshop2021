@@ -92,7 +92,8 @@ namespace Lindholm.Webshop2021.Domain.Test.Services
             //Assert
             mockRepo.Verify(r => r.GetProduct(productId), Times.Once);
         }
-
+        
+        [Fact]
         public void GetProduct_WithParams_ReturnsSingleProduct()
         {
             //Arrange
