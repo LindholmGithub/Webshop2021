@@ -40,7 +40,7 @@ namespace Lindholm.Webshop2021.Domain.Test.Services
         }
         #endregion
 
-        #region ProductService GetAllProducts
+        #region ProductService GetAllProducts Tests
 
         [Fact]
         public void GetAll_NoParams_CallsProductRepositoryOnce()
@@ -76,7 +76,7 @@ namespace Lindholm.Webshop2021.Domain.Test.Services
 
         #endregion
 
-        #region GetProduct
+        #region ProductService GetProduct Tests
         
         [Fact]
         public void GetProduct_WithParams_CallsProductRepositoryOnce()
