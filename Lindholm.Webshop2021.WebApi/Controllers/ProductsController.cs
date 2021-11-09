@@ -22,5 +22,12 @@ namespace Lindholm.Webshop2021.WebApi.Controllers
             //Hertil
             return Ok(dto);
         }
+
+        [HttpGet("{id}")]
+        public ActionResult<ProductDto> GetProduct(int id)
+        {
+            var dto = new ProductDto {Id = 1, Name = "Ost"};
+            return Ok(dto);
+        }
     }
 }
