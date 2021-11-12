@@ -1,4 +1,7 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using Lindholm.Webshop2021.Core.IServices;
 using Lindholm.Webshop2021.WebApi.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,19 +11,33 @@ namespace Lindholm.Webshop2021.WebApi.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
+        private readonly IProductService _productService;
+
+        public ProductsController(IProductService productService)
+        {
+            _productService = productService;
+        }
         [HttpGet]
         public ActionResult<ProductsDto> ReadAll()
         {
-            //Herfra
-            var dto = new ProductsDto();
-            dto.ProductsList = new List<ProductDto>
+            try
             {
-                new ProductDto() {Id = 1, Name = "Ost"},
-                new ProductDto() {Id = 2, Name = "Ostekiks"},
-                new ProductDto() {Id = 3, Name = "Smølf"}
-            };
-            //Hertil
-            return Ok(dto);
+                var products = _productService.GetAll()
+                    .Select(p => new ProductDto()
+                    {
+                        Id = p.Id,
+                        Name = p.Name
+                    })
+                    .ToList();
+                return Ok(new ProductsDto
+                {
+                    ProductsList = products,
+                });
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
         }
 
         [HttpGet("{id}")]
@@ -29,5 +46,6 @@ namespace Lindholm.Webshop2021.WebApi.Controllers
             var dto = new ProductDto {Id = 1, Name = "Ost"};
             return Ok(dto);
         }
+        
     }
 }
