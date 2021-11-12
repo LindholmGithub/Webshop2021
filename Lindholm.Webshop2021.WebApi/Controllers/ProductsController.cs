@@ -43,9 +43,18 @@ namespace Lindholm.Webshop2021.WebApi.Controllers
         [HttpGet("{id}")]
         public ActionResult<ProductDto> GetProduct(int id)
         {
-            var dto = new ProductDto {Id = 1, Name = "Ost"};
+            var product = _productService.GetProduct(id);
+            var dto = new ProductDto {Id = product.Id, Name = product.Name};
             return Ok(dto);
         }
-        
+
+        [HttpDelete("{id}")]
+        public ActionResult<ProductDto> DeleteProduct(int id)
+        {
+            var product = _productService.DeleteProduct(id);
+            var dto = new ProductDto {Id = product.Id, Name = product.Name};
+            return Ok(dto);
+        }
+
     }
 }

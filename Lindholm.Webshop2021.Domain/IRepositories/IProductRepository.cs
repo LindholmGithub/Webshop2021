@@ -7,5 +7,6 @@ namespace Lindholm.Webshop2021.Domain.IRepositories
     {
         List<Product> ReadAll();
         Product GetProduct(int productId);
+        Product DeleteProduct(int productId);
     }
 }
