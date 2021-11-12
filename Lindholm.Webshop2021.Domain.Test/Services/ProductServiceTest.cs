@@ -112,8 +112,45 @@ namespace Lindholm.Webshop2021.Domain.Test.Services
         }
 
         #endregion
+
+        #region ProductService DeleteService Test
+
+        [Fact]
+        public void DeleteProduct_WithParams_CallsProductRepositoryOnce()
+        {
+            //Arrange
+            var mockRepo = new Mock<IProductRepository>();
+            var productService = new ProductService(mockRepo.Object);
+            var productId = (int) 1;
+            
+            //Act
+            productService.DeleteProduct(productId);
+            
+            //Assert
+            mockRepo.Verify(r => r.DeleteProduct(productId), Times.Once);
+        }
+        
+        [Fact]
+        public void DeleteProduct_WithParams_ReturnsSingleProduct()
+        {
+            //Arrange
+            var expected = new Product {Id = 1, Name = "Ostestol"};
+            var mockRepo = new Mock<IProductRepository>();
+            mockRepo
+                .Setup(r => r.DeleteProduct(expected.Id))
+                .Returns(expected);
+            var productService = new ProductService(mockRepo.Object);
+            
+            //Act
+            productService.DeleteProduct(expected.Id);
+            
+            //Assert
+            Assert.Equal(expected,productService.DeleteProduct(expected.Id),new ProductComparer());
+        }
+        #endregion
     }
 
+    #region ProductComparer
     public class ProductComparer : IEqualityComparer<Product>
     {
         public bool Equals(Product x, Product y)
@@ -130,4 +167,6 @@ namespace Lindholm.Webshop2021.Domain.Test.Services
             return HashCode.Combine(obj.Id, obj.Name);
         }
     }
+    #endregion
+    
 }

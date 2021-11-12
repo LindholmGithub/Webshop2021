@@ -23,5 +23,25 @@ namespace Lindholm.Webshop2021.Domain.Test.IRepositories
                 .Returns(new List<Product>());
             Assert.NotNull(repoMock.Object.ReadAll());
         }
+        [Fact]
+        public void GetProduct_WithParams_ReturnsSingleProduct()
+        {
+            var repoMock = new Mock<IProductRepository>();
+            var productId = (int) 1;
+            repoMock
+                .Setup(r => r.GetProduct(productId))
+                .Returns(new Product());
+            Assert.NotNull(repoMock.Object.GetProduct(productId));
+        }
+        [Fact]
+        public void DeleteProduct_WithParams_ReturnsDeletedProduct()
+        {
+            var repoMock = new Mock<IProductRepository>();
+            var productId = (int) 1;
+            repoMock
+                .Setup(r => r.DeleteProduct(productId))
+                .Returns(new Product());
+            Assert.NotNull(repoMock.Object.DeleteProduct(productId));
+        }
     }
 }

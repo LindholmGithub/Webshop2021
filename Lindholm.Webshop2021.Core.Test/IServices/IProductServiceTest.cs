@@ -15,6 +15,7 @@ namespace Lindholm.Webshop2021.Core.Test.IServices
             Assert.NotNull(serviceMock.Object);
         }
 
+        #region GetAll Tests
         [Fact]
         public void GetAll_WithNoParams_ReturnsListOfProducts()
         {
@@ -24,7 +25,9 @@ namespace Lindholm.Webshop2021.Core.Test.IServices
                 .Returns(new List<Product>());
             Assert.NotNull(serviceMock.Object);
         }
+        #endregion
 
+        #region GetSingleProduct Tests
         [Fact]
         public void GetProduct_WithParams_ReturnsSingleProduct()
         {
@@ -35,5 +38,20 @@ namespace Lindholm.Webshop2021.Core.Test.IServices
                 .Returns(new Product());
             Assert.NotNull(serviceMock.Object);
         }
+        #endregion
+
+        #region DeleteProduct Tests
+        [Fact]
+        public void DeleteProduct_WithParams_ReturnsDeletedProduct()
+        {
+            var serviceMock = new Mock<IProductService>();
+            var productId = 1;
+            serviceMock
+                .Setup(s => s.DeleteProduct(productId))
+                .Returns(new Product());
+            Assert.NotNull(serviceMock.Object);
+        }
+        #endregion
+        
     }
 }
