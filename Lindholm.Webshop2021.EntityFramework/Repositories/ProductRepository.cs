@@ -50,5 +50,36 @@ namespace Lindholm.Webshop2021.EntityFramework.Repositories
             _ctx.SaveChanges();
             return productToDelete;
         }
+
+        public Product CreateProduct(Product productToCreate)
+        {
+            var entity = _ctx.Add(new ProductEntity()
+            {
+                Name = productToCreate.Name
+
+            }).Entity;
+            _ctx.SaveChanges();
+            return new Product()
+            {
+                Id = entity.Id,
+                Name = entity.Name
+            };
+        }
+
+        public Product UpdateProduct(Product productToUpdate)
+        {
+            var productEntity = new ProductEntity()
+            {
+                Id = productToUpdate.Id,
+                Name = productToUpdate.Name
+            };
+            var entity = _ctx.Update(productEntity).Entity;
+            _ctx.SaveChanges();
+            return new Product
+            {
+                Id = entity.Id,
+                Name = entity.Name
+            };
+        }
     }
 }

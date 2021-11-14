@@ -9,5 +9,7 @@ namespace Lindholm.Webshop2021.Core.IServices
         List<Product> GetAll();
         Product GetProduct(int productId);
         Product DeleteProduct(int productId);
+        Product CreateProduct(Product productToCreate);
+        Product UpdateProduct(Product product);
     }
 }

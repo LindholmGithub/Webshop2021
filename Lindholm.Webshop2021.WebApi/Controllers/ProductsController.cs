@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Lindholm.Webshop2021.Core.IServices;
+using Lindholm.Webshop2021.Core.Models;
 using Lindholm.Webshop2021.WebApi.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -56,5 +57,29 @@ namespace Lindholm.Webshop2021.WebApi.Controllers
             return Ok(dto);
         }
 
+        [HttpPost]
+        public ActionResult<ProductDto> CreateProduct([FromBody] ProductDto productDto)
+        {
+            var productToCreate = new Product()
+            {
+                Name = productDto.Name
+            };
+            var petCreated = _productService.CreateProduct(productToCreate);
+            return Created($"https://localhost/api/Pet/{petCreated.Id}",petCreated);
+        }
+        
+        [HttpPut("{id}")]
+        public ActionResult<ProductDto> UpdateProduct(int id, [FromBody] Product productToUpdate)
+        {
+            if (id != productToUpdate.Id)
+            {
+                return BadRequest("Id in param must be the same as in object.");
+            }
+            return Ok(_productService.UpdateProduct(new Product()
+            {
+                Id = id,
+                Name = productToUpdate.Name
+            }));
+        }
     }
 }

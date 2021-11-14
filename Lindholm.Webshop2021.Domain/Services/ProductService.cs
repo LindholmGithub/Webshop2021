@@ -35,5 +35,15 @@ namespace Lindholm.Webshop2021.Domain.Services
         {
             return _productRepository.DeleteProduct(productId);
         }
+
+        public Product CreateProduct(Product productToCreate)
+        {
+            return _productRepository.CreateProduct(productToCreate);
+        }
+
+        public Product UpdateProduct(Product productToUpdate)
+        {
+            return _productRepository.UpdateProduct(productToUpdate);
+        }
     }
 }
