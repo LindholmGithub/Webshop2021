@@ -1,6 +1,6 @@
-namespace Lindholm.Webshop2021.WebApi.Dtos
+namespace Lindholm.Webshop2021.EntityFramework.Entities
 {
-    public class ProductDto
+    public class UserEntity
     {
         public int Id { get; set; }
         public string Name { get; set; }

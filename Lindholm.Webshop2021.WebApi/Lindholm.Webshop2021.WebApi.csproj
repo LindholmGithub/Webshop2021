@@ -10,12 +10,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\Lindholm.Webshop2021.Domain\Lindholm.Webshop2021.Domain.csproj" />
       <ProjectReference Include="..\Lindholm.Webshop2021.EntityFramework\Lindholm.Webshop2021.EntityFramework.csproj" />
+      <ProjectReference Include="..\Lindholm.Webshop2021.Security\Lindholm.Webshop2021.Security.csproj" />
     </ItemGroup>
 
 </Project>

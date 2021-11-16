@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Lindholm.Webshop2021.WebApi.Dtos
+namespace Lindholm.Webshop2021.WebApi.Dtos.Products
 {
     public class ProductsDto
     {

@@ -7,6 +7,8 @@ namespace Lindholm.Webshop2021.EntityFramework
     {
         public MainDbContext(DbContextOptions<MainDbContext> options) : base(options) {}
         
-        public DbSet<ProductEntity> Products { get; set; }
+        public virtual DbSet<ProductEntity> Products { get; set; }
+        public virtual DbSet<UserEntity> Users { get; set; }
+
     }
 }
