@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Lindholm.Webshop2021.Core.Models;
 using Lindholm.Webshop2021.Domain.IRepositories;
@@ -11,6 +12,7 @@ namespace Lindholm.Webshop2021.EntityFramework.Repositories
         private readonly MainDbContext _ctx;
         public ProductRepository(MainDbContext ctx)
         {
+            if (ctx == null) throw new InvalidDataException("Product Repository Must have a DBContext");
             _ctx = ctx;
         }
 
@@ -20,7 +22,20 @@ namespace Lindholm.Webshop2021.EntityFramework.Repositories
                 .Select(pe => new Product
                 {
                     Id = pe.Id,
-                    Name = pe.Name
+                    Name = pe.Name,
+                    OwnerId = pe.OwnerId
+                })
+                .ToList();
+        }
+        
+        public List<Product> ReadMyProducts(int userId)
+        {
+            return _ctx.Products.Where(p => p.OwnerId == userId)
+                .Select(p => new Product
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    OwnerId = p.OwnerId
                 })
                 .ToList();
         }
@@ -31,7 +46,8 @@ namespace Lindholm.Webshop2021.EntityFramework.Repositories
                 .Select(pe => new Product
                 {
                     Id = pe.Id,
-                    Name = pe.Name
+                    Name = pe.Name,
+                    OwnerId = pe.OwnerId
                 })
                 .FirstOrDefault(p => p.Id == productId);
 
@@ -43,7 +59,8 @@ namespace Lindholm.Webshop2021.EntityFramework.Repositories
                 .Select(pe => new Product
                 {
                     Id = pe.Id,
-                    Name = pe.Name
+                    Name = pe.Name,
+                    OwnerId = pe.OwnerId
                 })
                 .FirstOrDefault(p => p.Id == productId);
             _ctx.Products.Remove(new ProductEntity() {Id = productId});
@@ -55,14 +72,16 @@ namespace Lindholm.Webshop2021.EntityFramework.Repositories
         {
             var entity = _ctx.Add(new ProductEntity()
             {
-                Name = productToCreate.Name
+                Name = productToCreate.Name,
+                OwnerId = productToCreate.OwnerId
 
             }).Entity;
             _ctx.SaveChanges();
             return new Product()
             {
                 Id = entity.Id,
-                Name = entity.Name
+                Name = entity.Name,
+                OwnerId = entity.OwnerId
             };
         }
 
@@ -71,14 +90,16 @@ namespace Lindholm.Webshop2021.EntityFramework.Repositories
             var productEntity = new ProductEntity()
             {
                 Id = productToUpdate.Id,
-                Name = productToUpdate.Name
+                Name = productToUpdate.Name,
+                OwnerId = productToUpdate.OwnerId
             };
             var entity = _ctx.Update(productEntity).Entity;
             _ctx.SaveChanges();
             return new Product
             {
                 Id = entity.Id,
-                Name = entity.Name
+                Name = entity.Name,
+                OwnerId = entity.OwnerId
             };
         }
     }

@@ -127,7 +127,7 @@ namespace Lindholm.Webshop2021.WebApi
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Innotech.LegosforLife.WebApi v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Lindholm.Webshop2021.WebApi v1"));
                 app.UseCors("dev-policy");
 
                 #region Setup Contexts
@@ -181,6 +181,7 @@ namespace Lindholm.Webshop2021.WebApi
             app.UseRouting();
 
             app.UseAuthentication();
+            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });

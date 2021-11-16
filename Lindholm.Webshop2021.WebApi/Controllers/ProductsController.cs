@@ -47,21 +47,32 @@ namespace Lindholm.Webshop2021.WebApi.Controllers
                 return StatusCode(500, e.Message);
             }
         }
+        
         [Authorize(Policy=nameof(CanReadProductsHandler))]
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public ActionResult<ProductDto> GetProduct(int id)
         {
             var product = _productService.GetProduct(id);
-            var dto = new ProductDto {Id = product.Id, Name = product.Name};
+            var dto = new ProductDto
+            {
+                Id = product.Id, 
+                Name = product.Name, 
+                OwnerId = product.OwnerId
+            };
             return Ok(dto);
         }
         
         [Authorize(Policy = nameof(CanWriteProductsHandler))]
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         public ActionResult<ProductDto> DeleteProduct(int id)
         {
             var product = _productService.DeleteProduct(id);
-            var dto = new ProductDto {Id = product.Id, Name = product.Name};
+            var dto = new ProductDto
+            {
+                Id = product.Id,
+                Name = product.Name,
+                OwnerId = product.OwnerId
+            };
             return Ok(dto);
         }
         
@@ -71,14 +82,15 @@ namespace Lindholm.Webshop2021.WebApi.Controllers
         {
             var productToCreate = new Product()
             {
-                Name = productDto.Name
+                Name = productDto.Name,
+                OwnerId = productDto.OwnerId
             };
-            var petCreated = _productService.CreateProduct(productToCreate);
-            return Created($"https://localhost/api/Pet/{petCreated.Id}",petCreated);
+            var productCreated = _productService.CreateProduct(productToCreate);
+            return Created($"https://localhost/api/Product/{productCreated.Id}",productCreated);
         }
         
         [Authorize(Policy = nameof(CanWriteProductsHandler))]
-        [HttpPut("{id}")]
+        [HttpPut("{id:int}")]
         public ActionResult<ProductDto> UpdateProduct(int id, [FromBody] ProductDto productToUpdate)
         {
             if (id != productToUpdate.Id)
@@ -88,7 +100,8 @@ namespace Lindholm.Webshop2021.WebApi.Controllers
             return Ok(_productService.UpdateProduct(new Product()
             {
                 Id = id,
-                Name = productToUpdate.Name
+                Name = productToUpdate.Name,
+                OwnerId = productToUpdate.OwnerId
             }));
         }
     }
