@@ -101,8 +101,6 @@ namespace Lindholm.Webshop2021.WebApi
                     //Configuration["JwtToken:SecretKey"]
                 };
             });
-            services.AddSingleton<IAuthorizationHandler, CanWriteProductsHandler>();
-            services.AddSingleton<IAuthorizationHandler, CanReadProductsHandler>();
             services.AddAuthorization(options =>
             {
                 options.AddPolicy(nameof(CanWriteProductsHandler), 
