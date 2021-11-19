@@ -133,6 +133,8 @@ namespace Lindholm.Webshop2021.WebApi
                 mainContext.Database.EnsureDeleted();
                 mainContext.Database.EnsureCreated();
                 mainContext.Users.Add(new UserEntity { Name = "Bilbo" });
+                mainContext.Users.Add(new UserEntity { Name = "Billy Bob" });
+                mainContext.Users.Add(new UserEntity { Name = "Bobby Bill" });
                 mainContext.SaveChanges();
                 mainContext.Products.AddRange(
                     new ProductEntity{ Name = "P1", OwnerId = 1},
