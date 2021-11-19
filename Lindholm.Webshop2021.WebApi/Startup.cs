@@ -174,14 +174,12 @@ namespace Lindholm.Webshop2021.WebApi
                
             }
 
-            app.UseMiddleware<JWTMiddleware>();
-            
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
             app.UseAuthentication();
-            
+            app.UseMiddleware<JWTMiddleware>();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
